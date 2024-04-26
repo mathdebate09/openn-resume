@@ -105,6 +105,31 @@ function App() {
     />
   ))
 
+  //Addition handlers
+  function handleAddEducation() {
+    let updatedEducationList = [...educationList];
+    updatedEducationList.push(new Education(uuid()));
+    setEducationList(updatedEducationList);
+  }
+
+  function handleAddWork() {
+    let updatedWorkActivities = [...workActivities];
+    updatedWorkActivities.push(new Work(uuid()));
+    setWorkActivities(updatedWorkActivities);
+  }
+
+  function handleAddSkills() {
+    let updatedSkillList = [...skillList];
+    updatedSkillList.push(new Skills(uuid()));
+    setSkillList(updatedSkillList);
+  }
+
+  function handleAddProject() {
+    let updatedProjectActivities = [...projectActivities];
+    updatedProjectActivities.push(new Project(uuid()));
+    setProjectActivities(updatedProjectActivities);
+  }
+
   return (
     <div className="main-container">
       <div className="input-div">
@@ -120,18 +145,22 @@ function App() {
         <div className="education-input">
           <h2 className="input-heading"><img src={educationImg}></img>Education</h2>
           {arrEducationInputs}
+          <button onClick={handleAddEducation}>+ Add New</button>
         </div>
         <div className="work-input">
           <h2 className="input-heading"><img src={workImg}></img>Work Experience</h2>
           {arrWorkInputs}
+          <button onClick={handleAddWork}>+ Add New</button>
         </div>
         <div className="skill-input">
           <h2 className="input-heading"><img src={skillsImg}></img>Skils</h2>
           {arrSkillsInputs}
+          <button onClick={handleAddSkills}>+ Add New</button>
         </div>
         <div className="project-input">
           <h2 className="input-heading"><img src={projectImg}></img>Projects</h2>
           {arrProjectInputs}
+          <button onClick={handleAddProject}>+ Add New</button>
         </div>
       </div>
       <div className="display-div">

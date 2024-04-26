@@ -57,7 +57,7 @@ export default function ProjectInput({ projectActivity, projectActivities, setPr
       activity.id !== projectActivity.id
     );
 
-    setEducationList(updatedProjectActivities);
+    setProjectActivities(updatedProjectActivities);
   }
 
   return (
