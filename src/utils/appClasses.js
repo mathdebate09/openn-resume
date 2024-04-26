@@ -28,9 +28,8 @@ class Skills {
 
 class Project {
     constructor(uuid) {
-        this.designation = '';
-        this.startDate = '';
-        this.endDate = '';
+        this.title = '';
+        this.url = '';
         this.description = '';
         this.id = uuid;
     }
