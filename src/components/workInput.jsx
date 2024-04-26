@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import React from 'react'
 
-export default function WorkInput({ workActivity, workActivities, setWorkActivities }) {
+export default function WorkInput({ workActivity, workActivities, setWorkActivities }, { key }) {
 
+  //handlers functions
   function handleDesignationChange(e) {
     let updatedWorkActivity = { ...workActivity, designation: e.target.value };
 
@@ -44,27 +44,29 @@ export default function WorkInput({ workActivity, workActivities, setWorkActivit
   };
 
   return (
-    <form onSubmit={e => e.preventDefault()}>
-      <input
-        placeholder="Designation"
-        value={workActivity.designation}
-        onChange={handleDesignationChange}
-      />
-      <input
-        placeholder="Start"
-        value={workActivity.startDate}
-        onChange={handleStartChange}
-      />
-      <input
-        placeholder="End"
-        value={workActivity.endDate}
-        onChange={handleEndChange}
-      />
-      <textarea
-        placeholder="Description"
-        value={workActivity.description}
-        onChange={handleDescriptionChange}
-      />
-    </form>
+    <>
+      <form onSubmit={e => e.preventDefault()}>
+        <input
+          placeholder="Designation"
+          value={workActivity.designation}
+          onChange={handleDesignationChange}
+        />
+        <input
+          placeholder="Start"
+          value={workActivity.startDate}
+          onChange={handleStartChange}
+        />
+        <input
+          placeholder="End"
+          value={workActivity.endDate}
+          onChange={handleEndChange}
+        />
+        <textarea
+          placeholder="Description"
+          value={workActivity.description}
+          onChange={handleDescriptionChange}
+        />
+      </form>
+    </>
   );
 }

@@ -1,30 +1,39 @@
 class Education {
-    constructor() {
+    constructor(uuid) {
         this.startDate = '';
         this.endDate = '';
         this.course = '';
         this.grade = '';
-        this.id = '';
+        this.id = uuid;
     }
 }
 
-// Class to be used to Work/Project section
-class Activity {
-    constructor() {
+class Work {
+    constructor(uuid) {
         this.designation = '';
         this.startDate = '';
         this.endDate = '';
         this.description = '';
-        this.id = '';
+        this.id = uuid;
     }
 }
 
 class Skills {
-    constructor() {
+    constructor(uuid) {
         this.position = '';
         this.techstack = '';
-        this.id = '';
+        this.id = uuid;
     }
 }
 
-export {Education, Activity, Skills, };
+class Project {
+    constructor(uuid) {
+        this.designation = '';
+        this.startDate = '';
+        this.endDate = '';
+        this.description = '';
+        this.id = uuid;
+    }
+}
+
+export {Education, Work, Skills, Project};
