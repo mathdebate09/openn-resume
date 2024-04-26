@@ -5,7 +5,7 @@ export default function WorkDisplay({ workActivity }) {
 
     return (
         <>
-            <h1>{workActivity.designation}</h1>
+            <h3>{workActivity.designation}</h3>
             <p>{workActivity.startDate} - {workActivity.endDate}</p>
             <p>{workActivity.description}</p>
         </>
