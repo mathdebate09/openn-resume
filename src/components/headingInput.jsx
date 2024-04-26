@@ -1,5 +1,8 @@
 import React from 'react'
 
+//importing images
+import resetImg from '../assets/icons/reset.svg'
+
 export default function HeadingInput({ name, socialLinks, setName, setSocialLinks }) {
 
   //handlers functions
@@ -37,8 +40,15 @@ function handleContactChange(e) {
   setSocialLinks(updatedSocialLinks);
 }
 
+function handleReset() {
+  setSocialLinks(['','','','','','']);
+  setName('');
+}
   return (
     <>
+      <div className="input-bts">
+        <img src={resetImg} onClick={handleReset}></img>
+      </div>
       <form onSubmit={e => e.preventDefault()}>
         <input
           placeholder="Your Name"

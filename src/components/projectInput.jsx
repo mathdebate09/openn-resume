@@ -1,5 +1,9 @@
 import React from 'react'
 
+//importing images
+import resetImg from '../assets/icons/reset.svg'
+import deleteImg from '../assets/icons/delete.svg'
+
 export default function ProjectInput({ projectActivity, projectActivities, setProjectActivities }) {
 
   //handlers functions
@@ -33,8 +37,35 @@ export default function ProjectInput({ projectActivity, projectActivities, setPr
     setProjectActivities(updatedProjectActivities);
   };
 
+  function handleReset() {
+    let updatedProjectActivity = {
+      ...projectActivity,
+      title: '',
+      url: '',
+      description: ''
+    };
+
+    let updatedProjectActivities = projectActivities.map(activity =>
+      activity.id === updatedProjectActivity.id ? updatedProjectActivity : activity
+    );
+
+    setProjectActivities(updatedProjectActivities);
+  }
+
+  function handleDelete() {
+    let updatedProjectActivities = projectActivities.filter(activity =>
+      activity.id !== projectActivity.id
+    );
+
+    setEducationList(updatedProjectActivities);
+  }
+
   return (
     <>
+      <div className="input-bts">
+        <img src={resetImg} onClick={handleReset}></img>
+        <img src={deleteImg} onClick={handleDelete}></img>
+      </div>
       <form onSubmit={e => e.preventDefault()}>
         <input
           placeholder="Title"

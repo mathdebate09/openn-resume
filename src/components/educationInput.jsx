@@ -1,5 +1,9 @@
 import React from 'react'
 
+//importing images
+import resetImg from '../assets/icons/reset.svg'
+import deleteImg from '../assets/icons/delete.svg'
+
 export default function EducationInput({ education, educationList, setEducationList }) {
 
   //handlers functions
@@ -7,7 +11,7 @@ export default function EducationInput({ education, educationList, setEducationL
     let updatedEducation = { ...education, startDate: e.target.value };
 
     let updatedEducationList = educationList.map(everyEducation =>
-        everyEducation.id === updatedEducation.id ? updatedEducation : everyEducation
+      everyEducation.id === updatedEducation.id ? updatedEducation : everyEducation
     );
 
     setEducationList(updatedEducationList);
@@ -17,7 +21,7 @@ export default function EducationInput({ education, educationList, setEducationL
     let updatedEducation = { ...education, endDate: e.target.value };
 
     let updatedEducationList = educationList.map(everyEducation =>
-        everyEducation.id === updatedEducation.id ? updatedEducation : everyEducation
+      everyEducation.id === updatedEducation.id ? updatedEducation : everyEducation
     );
 
     setEducationList(updatedEducationList);
@@ -27,7 +31,7 @@ export default function EducationInput({ education, educationList, setEducationL
     let updatedEducation = { ...education, course: e.target.value };
 
     let updatedEducationList = educationList.map(everyEducation =>
-        everyEducation.id === updatedEducation.id ? updatedEducation : everyEducation
+      everyEducation.id === updatedEducation.id ? updatedEducation : everyEducation
     );
 
     setEducationList(updatedEducationList);
@@ -37,14 +41,42 @@ export default function EducationInput({ education, educationList, setEducationL
     let updatedEducation = { ...education, grade: e.target.value };
 
     let updatedEducationList = educationList.map(everyEducation =>
-        everyEducation.id === updatedEducation.id ? updatedEducation : everyEducation
+      everyEducation.id === updatedEducation.id ? updatedEducation : everyEducation
     );
 
     setEducationList(updatedEducationList);
   };
 
+  function handleReset() {
+    let updatedEducation = {
+      ...education,
+      startDate: '',
+      endDate: '',
+      course: '',
+      grade: ''
+    };
+
+    let updatedEducationList = educationList.map(everyEducation =>
+      everyEducation.id === updatedEducation.id ? updatedEducation : everyEducation
+    );
+
+    setEducationList(updatedEducationList);
+  }
+
+  function handleDelete() {
+    let updatedEducationList = educationList.filter(everyEducation =>
+      everyEducation.id !== education.id
+    );
+
+    setEducationList(updatedEducationList);
+  }
+
   return (
     <>
+      <div className="input-bts">
+        <img src={resetImg} onClick={handleReset}></img>
+        <img src={deleteImg} onClick={handleDelete}></img>
+      </div>
       <form onSubmit={e => e.preventDefault()}>
         <input
           placeholder="Start"
