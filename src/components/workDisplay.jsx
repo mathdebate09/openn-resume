@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import React from 'react'
 
-export default function WorkDisplay({ workActivity }, { key }) {
+export default function WorkDisplay({ workActivity }) {
 
     return (
         <>

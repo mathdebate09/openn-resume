@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function WorkDisplay({ education }, { key }) {
+export default function WorkDisplay({ education }) {
 
     return (
         <>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function WorkInput({ workActivity, workActivities, setWorkActivities }, { key }) {
+export default function WorkInput({ workActivity, workActivities, setWorkActivities }) {
 
   //handlers functions
   function handleDesignationChange(e) {

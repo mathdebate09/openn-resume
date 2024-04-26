@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function EducationInput({ education, educationList, setEducationList }, { key }) {
+export default function EducationInput({ education, educationList, setEducationList }) {
 
   //handlers functions
   function handleStartChange(e) {

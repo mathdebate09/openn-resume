@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SkillsInput({ skill, skillList, setSkillList }, { key }) {
+export default function SkillsInput({ skill, skillList, setSkillList }) {
     
     //handler functions
     function handlePositionChange(e) {
