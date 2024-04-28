@@ -199,19 +199,27 @@ function App() {
           </div>
           <div className="education-display">
             <h2><span>E</span>ducation</h2>
-            {arrEducationDisplay}
+            <div className="education-children">
+              {arrEducationDisplay}
+            </div>
           </div>
           <div className="work-display">
-            <h2><span>W</span>ork</h2>
-            {arrWorkDisplay}
+            <h2><span>W</span>ork <span>E</span>xperience</h2>
+            <div className="work-children">
+              {arrWorkDisplay}
+            </div>
           </div>
           <div className="skill-display">
             <h2><span>S</span>kills</h2>
-            {arrSkillsDisplay}
+            <div className="skill-children">
+              {arrSkillsDisplay}
+            </div>
           </div>
           <div className="project-display">
-            <h2><span>P</span>roject</h2>
-            {arrProjectsDisplay}
+            <h2><span>P</span>rojects</h2>
+            <div className="project-children">
+              {arrProjectsDisplay}
+            </div>
           </div>
         </div>
       </section>
