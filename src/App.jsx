@@ -23,10 +23,14 @@ import educationImg from './assets/icons/education.svg'
 import workImg from './assets/icons/work.svg'
 import skillsImg from './assets/icons/skills.svg'
 import projectImg from './assets/icons/projects.svg'
+import pdfImg from './assets/icons/pdf.svg'
+
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 function App() {
   //states
-  const [name, setName] = useState('')
+  const [name, setName] = useState('Your Name')
   const [socialLinks, setSocialLinks] = useState(['', '', '', '', ''])
 
   const [educationList, setEducationList] = useState([new Education(uuid())])
@@ -130,11 +134,33 @@ function App() {
     setProjectActivities(updatedProjectActivities);
   }
 
+  //print pdf
+  function getPDF() {
+    const htmlContent = document.querySelector(".html-content");
+    const HTML_Width = htmlContent.offsetWidth;
+    const HTML_Height = htmlContent.offsetHeight;
+    const top_left_margin = 15;
+    const PDF_Width = HTML_Width + top_left_margin * 2;
+    const PDF_Height = (PDF_Width * 1.4142);
+
+    html2canvas(htmlContent, { allowTaint: true }).then(function (canvas) {
+      const imgData = canvas.toDataURL("image/jpeg", 1.0);
+      const pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(imgData, 'PNG', top_left_margin, top_left_margin, pdfWidth, pdfHeight);
+      pdf.save("HTML-Document.pdf");
+    });
+  }
+
   return (
     <div className="main-container">
-      <div className="input-div">
+      <header className="primary-header" onClick={() => window.location.reload()}>OpenRésumé</header>
+      <section className="input-div">
+        <button onClick={getPDF}><img src={pdfImg}></img>Download</button>
         <div className="personal-input">
-          <h2 className="input-heading"><img src={personImg}></img>Personal Details</h2>
+          <h2 className="input-heading flex-row"><img src={personImg}></img>Personal Details</h2>
           <HeadingInput
             name={name}
             setName={setName}
@@ -153,18 +179,18 @@ function App() {
           <button onClick={handleAddWork}>+ Add New</button>
         </div>
         <div className="skill-input">
-          <h2 className="input-heading"><img src={skillsImg}></img>Skils</h2>
+          <h2 className="input-heading"><img src={skillsImg} className="smaller-input-logo "></img>Skills</h2>
           {arrSkillsInputs}
           <button onClick={handleAddSkills}>+ Add New</button>
         </div>
         <div className="project-input">
-          <h2 className="input-heading"><img src={projectImg}></img>Projects</h2>
+          <h2 className="input-heading"><img src={projectImg} className="smaller-input-logo "></img>Projects</h2>
           {arrProjectInputs}
           <button onClick={handleAddProject}>+ Add New</button>
         </div>
-      </div>
-      <div className="display-div">
-        <div className="resume-page">
+      </section>
+      <section className="display-div">
+        <div className="resume-page html-content">
           <div className="personal-display">
             <HeadingDisplay
               name={name}
@@ -188,7 +214,7 @@ function App() {
             {arrProjectsDisplay}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

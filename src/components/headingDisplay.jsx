@@ -9,7 +9,7 @@ import contactImg from '../assets/socials/contact-num.svg'
 
 function HeadingDisplay({name, socialLinks}) {
     return(
-        <div className='heading-main'>
+        <>
             <h1>{name}</h1>
             <ul className='social-links'>
                 <li><a href={'https://github.com/'+socialLinks[0]} target="_blank" rel="noopener noreferrer"><img src={githubImg} alt="Github"/> {socialLinks[0]}</a></li>
@@ -18,7 +18,7 @@ function HeadingDisplay({name, socialLinks}) {
                 <li><a href={'mailto:'+socialLinks[3]} target="_blank" rel="noopener noreferrer"><img src={emailImg} alt="Email"/> {socialLinks[3]}</a></li>
                 <li><a href={'tel:'+socialLinks[4]} target="_blank" rel="noopener noreferrer"><img src={contactImg} alt="Contact"/> {socialLinks[4]}</a></li>
             </ul>
-        </div>
+        </>
     )
 }
 
