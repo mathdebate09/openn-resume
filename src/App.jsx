@@ -16,6 +16,7 @@ import SkillsInput from './components/skillsInput'
 import SkillsDisplay from './components/skillsDisplay'
 import ProjectInput from './components/projectInput'
 import ProjectDisplay from './components/projectDisplay'
+import Footer from './components/footer'
 
 //Images
 import personImg from './assets/icons/personal-details.svg'
@@ -155,75 +156,80 @@ function App() {
   }
 
   return (
-    <div className="main-container">
-      <header className="primary-header" onClick={() => window.location.reload()}>OpenRésumé</header>
-      <section className="input-div">
-        <button onClick={getPDF}><img src={pdfImg}></img>Download</button>
-        <div className="personal-input">
-          <h2 className="input-heading flex-row"><img src={personImg}></img>Personal Details</h2>
-          <HeadingInput
-            name={name}
-            setName={setName}
-            socialLinks={socialLinks}
-            setSocialLinks={setSocialLinks}
-          />
-        </div>
-        <div className="education-input">
-          <h2 className="input-heading"><img src={educationImg}></img>Education</h2>
-          {arrEducationInputs}
-          <button onClick={handleAddEducation}>+ Add New</button>
-        </div>
-        <div className="work-input">
-          <h2 className="input-heading"><img src={workImg}></img>Work Experience</h2>
-          {arrWorkInputs}
-          <button onClick={handleAddWork}>+ Add New</button>
-        </div>
-        <div className="skill-input">
-          <h2 className="input-heading"><img src={skillsImg} className="smaller-input-logo "></img>Skills</h2>
-          {arrSkillsInputs}
-          <button onClick={handleAddSkills}>+ Add New</button>
-        </div>
-        <div className="project-input">
-          <h2 className="input-heading"><img src={projectImg} className="smaller-input-logo "></img>Projects</h2>
-          {arrProjectInputs}
-          <button onClick={handleAddProject}>+ Add New</button>
-        </div>
-      </section>
-      <section className="display-div">
-        <div className="resume-page html-content">
-          <div className="personal-display">
-            <HeadingDisplay
+    <>
+      <div className="main-container">
+        <header className="primary-header" onClick={() => window.location.reload()}>OpenRésumé</header>
+        <section className="input-div">
+          <button onClick={getPDF}><img src={pdfImg}></img>Download</button>
+          <div className="personal-input">
+            <h2 className="input-heading flex-row"><img src={personImg}></img>Personal Details</h2>
+            <HeadingInput
               name={name}
+              setName={setName}
               socialLinks={socialLinks}
+              setSocialLinks={setSocialLinks}
             />
           </div>
-          <div className="education-display">
-            <h2><span>E</span>ducation</h2>
-            <div className="education-children">
-              {arrEducationDisplay}
+          <div className="education-input">
+            <h2 className="input-heading"><img src={educationImg}></img>Education</h2>
+            {arrEducationInputs}
+            <button onClick={handleAddEducation}>+ Add New</button>
+          </div>
+          <div className="work-input">
+            <h2 className="input-heading"><img src={workImg}></img>Work Experience</h2>
+            {arrWorkInputs}
+            <button onClick={handleAddWork}>+ Add New</button>
+          </div>
+          <div className="skill-input">
+            <h2 className="input-heading"><img src={skillsImg} className="smaller-input-logo "></img>Skills</h2>
+            {arrSkillsInputs}
+            <button onClick={handleAddSkills}>+ Add New</button>
+          </div>
+          <div className="project-input">
+            <h2 className="input-heading"><img src={projectImg} className="smaller-input-logo "></img>Projects</h2>
+            {arrProjectInputs}
+            <button onClick={handleAddProject}>+ Add New</button>
+          </div>
+        </section>
+        <section className="display-div">
+          <div className="resume-page html-content">
+            <div className="personal-display">
+              <HeadingDisplay
+                name={name}
+                socialLinks={socialLinks}
+              />
+            </div>
+            <div className="education-display">
+              <h2><span>E</span>ducation</h2>
+              <div className="education-children">
+                {arrEducationDisplay}
+              </div>
+            </div>
+            <div className="work-display">
+              <h2><span>W</span>ork <span>E</span>xperience</h2>
+              <div className="work-children">
+                {arrWorkDisplay}
+              </div>
+            </div>
+            <div className="skill-display">
+              <h2><span>S</span>kills</h2>
+              <div className="skill-children">
+                {arrSkillsDisplay}
+              </div>
+            </div>
+            <div className="project-display">
+              <h2><span>P</span>rojects</h2>
+              <div className="project-children">
+                {arrProjectsDisplay}
+              </div>
             </div>
           </div>
-          <div className="work-display">
-            <h2><span>W</span>ork <span>E</span>xperience</h2>
-            <div className="work-children">
-              {arrWorkDisplay}
-            </div>
-          </div>
-          <div className="skill-display">
-            <h2><span>S</span>kills</h2>
-            <div className="skill-children">
-              {arrSkillsDisplay}
-            </div>
-          </div>
-          <div className="project-display">
-            <h2><span>P</span>rojects</h2>
-            <div className="project-children">
-              {arrProjectsDisplay}
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+        <Footer
+        numOfHours={17}
+      />
+      </div>
+    </>
   );
 }
 

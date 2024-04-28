@@ -50,8 +50,9 @@ li {
 /* Main Container */
 .main-container {
     display: grid;
-    grid-template-rows: 10rem 1fr;
+    grid-template-rows: 10rem 1fr 2rem;
     grid-template-columns: 1fr 1fr;
+    gap:3rem;
     max-width: 60rem;
     margin: 0 auto;
     justify-content: center;
@@ -82,6 +83,7 @@ header {
     width:fit-content;
     height:fit-content;
     place-self:center;
+    margin-bottom:-2rem;
 }
 
 /* Input Styles */
@@ -360,6 +362,21 @@ span {
     margin-bottom:6px;
 }
 
+footer {
+    width:100%;
+    height:100%;
+    font-size: var(--fs-100);
+    text-align: center;
+    color:var(--green-900);
+    font-family:var(--body-font);
+    grid-column: 1 / 3;
+}
+
+footer a {
+    all:unset;
+    font-weight: 600;
+    cursor:pointer;
+}
 /* Utility Classes */
 
 .primary-header {
