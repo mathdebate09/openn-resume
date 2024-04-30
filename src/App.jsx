@@ -188,9 +188,9 @@ export default function App() {
       <div className="main-container">
         <header className="primary-header" onClick={() => window.location.reload()}>OpennRésumé</header>
         <section className="input-div">
-          <button onClick={getPDF}><img src={pdfImg}></img>Download</button>
+          <button onClick={getPDF}><img src={pdfImg} alt="Adobe for PDF"></img>Download</button>
           <div className="personal-input">
-            <h2 className="input-heading" onClick={() => toggleVisibility(0)}><img src={personImg}></img>Personal Details</h2>
+            <h2 className="input-heading" onClick={() => toggleVisibility(0)}><img src={personImg} alt="personal details"></img>Personal Details</h2>
             {isVisible[0] && (
               <HeadingInput
                 name={name}
@@ -202,23 +202,23 @@ export default function App() {
           </div>
           <div className="education-input">
             <h2 className="input-heading" onClick={() => toggleVisibility(1)}>
-              <img src={educationImg}></img>Education
+              <img src={educationImg} alt="education"></img>Education
             </h2>
             {isVisible[1] && arrEducationInputs}
             {isVisible[1] &&<button onClick={handleAddEducation}>+ Add New</button>}
           </div>
           <div className="work-input">
-            <h2 className="input-heading" onClick={() => toggleVisibility(2)}><img src={workImg}></img>Work Experience</h2>
+            <h2 className="input-heading" onClick={() => toggleVisibility(2)}><img src={workImg} alt="work experience"></img>Work Experience</h2>
             {isVisible[2] && arrWorkInputs}
             {isVisible[2] &&<button onClick={handleAddWork}>+ Add New</button>}
           </div>
           <div className="skill-input">
-            <h2 className="input-heading" onClick={() => toggleVisibility(3)}><img src={skillsImg} className="smaller-input-logo "></img>Skills</h2>
+            <h2 className="input-heading" onClick={() => toggleVisibility(3)}><img src={skillsImg} alt="skills" className="smaller-input-logo "></img>Skills</h2>
             {isVisible[3] && arrSkillsInputs}
             {isVisible[3] && <button onClick={handleAddSkills}>+ Add New</button>}
           </div>
           <div className="project-input">
-            <h2 className="input-heading" onClick={() => toggleVisibility(4)}><img src={projectImg} className="smaller-input-logo "></img>Projects</h2>
+            <h2 className="input-heading" onClick={() => toggleVisibility(4)}><img src={projectImg} alt="projects" className="smaller-input-logo "></img>Projects</h2>
             {isVisible[4] && arrProjectInputs}
             {isVisible[4] && <button onClick={handleAddProject}>+ Add New</button>}
           </div>
