@@ -3,6 +3,7 @@ import React from 'react'
 import { v4 as uuid } from 'uuid'
 
 import './styles/App.css'
+import './styles/App-responsive.css'
 import { Work, Education, Skills, Project } from './utils/appClasses'
 
 //Componenets
@@ -27,20 +28,20 @@ import projectImg from './assets/icons/projects.svg'
 import pdfImg from './assets/icons/pdf.svg'
 
 import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import { jsPDF } from "jspdf";
 
 function App() {
   //states
   const [name, setName] = useState('Your Name')
-  const [socialLinks, setSocialLinks] = useState(['', '', '', '', ''])
+  const [socialLinks, setSocialLinks] = useState(['username', 'username', 'mysite.com', 'email@mysite.com', '+ 00.0000.000.000'])
 
-  const [educationList, setEducationList] = useState([new Education(uuid())])
+  const [educationList, setEducationList] = useState([{ startDate: '2030', endDate: 'present', course: 'PhD (Subject) at University', grade: 'GPA: 4.0/4.0', id: uuid() }, { startDate: '2023', endDate: '2027', course: 'Bachelor’s Degree at College', grade: 'GPA: 4.0/4.0', id: uuid() }, { startDate: '2022', endDate: '2021', course: 'Class 12th Some Board', grade: 'Grade', id: uuid() }, { startDate: '2021', endDate: '2020', course: 'Class 10th Some Board', grade: 'Grade', id: uuid() }]);
 
-  const [workActivities, setWorkActivities] = useState([new Work(uuid())])
+  const [workActivities, setWorkActivities] = useState([{ designation: 'Designation', startDate: 'Jan 2021', endDate: 'present', description: 'long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width', id: uuid() }, { designation: 'Designation', startDate: 'Mar 2019', endDate: 'Jan 2021', description: 'long long line of blah blah that will wrap when the table fills the column width again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah', id: uuid() }]);
 
-  const [skillList, setSkillList] = useState([new Skills(uuid())])
+  const [skillList, setSkillList] = useState([{ position: 'Some Skills', techstack: 'This, That, Some of this and that etc.', id: uuid() }, { position: 'Some More Skills', techstack: ' Also some more of this, Some more that, And some of this and that etc.', id: uuid() }]);
 
-  const [projectActivities, setProjectActivities] = useState([new Project(uuid())])
+  const [projectActivities, setProjectActivities] = useState([{ title: 'Some Project', url: 'something.com', description: 'long long line of blah blah that will wrap when the table fills the column width again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah', id: uuid() }]);
 
 
 
@@ -137,9 +138,27 @@ function App() {
 
   //print pdf
   function getPDF() {
+    const resumeTitle = document.querySelector(".resume-page h1");
+    const socialLinksTexts = document.querySelectorAll(".social-links span");
+    const resumeH2s = document.querySelectorAll(".resume-page h2");
+
+     // Get the element
+     const scaledElement = document.querySelector('.display-div');
+
+     // Store the current transform value
+     const oldTransform = scaledElement.style.transform;
+ 
+     // Remove the transform
+     scaledElement.style.transform = 'none';
+ 
+
+    resumeTitle.style.paddingBottom = '20px';
+    socialLinksTexts.forEach(el => el.style.paddingBottom = '18px');
+    resumeH2s.forEach(el => el.style.paddingBottom = '8px');
+
     const htmlContent = document.querySelector(".html-content");
+
     const HTML_Width = htmlContent.offsetWidth;
-    const HTML_Height = htmlContent.offsetHeight;
     const top_left_margin = 15;
     const PDF_Width = HTML_Width + top_left_margin * 2;
     const PDF_Height = (PDF_Width * 1.4142);
@@ -151,8 +170,14 @@ function App() {
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
       pdf.addImage(imgData, 'PNG', top_left_margin, top_left_margin, pdfWidth, pdfHeight);
-      pdf.save("HTML-Document.pdf");
+      pdf.save(`${name} CV.pdf`);
     });
+
+    resumeTitle.style.paddingBottom = '';
+    socialLinksTexts.forEach(el => el.style.paddingBottom = '');
+    resumeH2s.forEach(el => el.style.paddingBottom = '');
+
+    scaledElement.style.transform = oldTransform;
   }
 
   return (
@@ -226,8 +251,8 @@ function App() {
           </div>
         </section>
         <Footer
-        numOfHours={17}
-      />
+          numOfHours={17}
+        />
       </div>
     </>
   );

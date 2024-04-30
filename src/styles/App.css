@@ -21,15 +21,11 @@
     --body-font: "LibreFranklin", sans-serif;
     --heading-font: "RedHatDisplay", sans-serif;
 
-    --fs-100: 1.2rem;
-    --fs-400: 1.5rem;
-    --fs-700: 2.2rem;
-    --fs-900: 3.1rem;
+    --fs-100: 1rem;
+    --fs-400: 1.3rem;
+    --fs-700: 2rem;
+    --fs-900: 2.8rem;
     background-color: var(--bg-400);
-}
-
-img {
-    width: 40px;
 }
 
 form {
@@ -39,7 +35,7 @@ form {
 
 input,
 textarea {
-    width: 14rem;
+    width: calc(100%-2rem);
 }
 
 ul,
@@ -50,10 +46,10 @@ li {
 /* Main Container */
 .main-container {
     display: grid;
-    grid-template-rows: 10rem 1fr 2rem;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 8rem 1fr 2rem;
+    grid-template-columns: fit-content(100%) fit-content(100%);
     gap:3rem;
-    max-width: 60rem;
+    width: fit-content;
     margin: 0 auto;
     justify-content: center;
 }
@@ -100,6 +96,17 @@ textarea:focus {
     background-color: var(--green-400);
 }
 
+/* Button Styles Click Relay*/
+button {
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.5);
+}
+
 /* Downlaod Bt */
 .input-div>button:first-child {
     display: flex;
@@ -125,13 +132,14 @@ textarea:focus {
     place-items: center;
     gap: 3rem;
     font-family: var(--body-font);
+    justify-self:end;
 }
 
 .input-div>div {
     background-color: var(--bg-100);
     padding: 1.5rem 1.5rem;
     border-radius: 12px;
-    width: 28rem;
+    width: 22rem;
 
     display: grid;
 
@@ -179,6 +187,11 @@ textarea:focus {
 .input-bts>img {
     width: 28px;
     cursor: pointer;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.input-bts img:active {
+    transform: scale(0.8);
 }
 
 .input-bts {
@@ -222,7 +235,7 @@ textarea:focus {
 .display-div{
     width:fit-content;
     height:fit-content;
-    padding:1rem;
+    padding:0.2rem;
     border:2px solid var(--bg-100);
     border-radius:12px;
     background-color:var(--bg-100);
@@ -256,6 +269,7 @@ textarea:focus {
     justify-content:center;
     gap: 10px;
     margin-top:6px;
+    margin-bottom:1.2rem;
 }
 
 .social-links a,
@@ -279,7 +293,11 @@ textarea:focus {
 
 .social-links li:last-child {
     border-right:none;
-    margin-left:-4px;
+    margin-left:-6px;
+}
+
+.social-links li:last-child img {
+    margin-right:-6px;
 }
 
 .personal-display {
@@ -295,9 +313,10 @@ textarea:focus {
     font-weight: 400;
     text-transform: uppercase;
     border-bottom:1px solid black;
-    margin-bottom:8px;
+    
 }
-span {
+
+.resume-page>div>h2>span {
     font-size:1.7rem;
 }
 
@@ -376,7 +395,41 @@ footer a {
     all:unset;
     font-weight: 600;
     cursor:pointer;
+    background-image:linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #caa256 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300%;
+    animation: animated_gradient_text 12s ease-in-out infinite;
+    -moz-animation: animaanimated_gradient_textted_text 12s ease-in-out infinite;
+    -webkit-animation: animated_gradient_text 12s ease-in-out infinite;
+
 }
+
+footer a:first-child {
+    background-image: linear-gradient(90deg, hsla(177, 87%, 79%, 1) 0%, hsla(235, 89%, 70%, 1) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300%;
+    animation: animated_gradient_text 12s ease-in-out infinite;
+    -moz-animation: animaanimated_gradient_textted_text 12s ease-in-out infinite;
+    -webkit-animation: animated_gradient_text 12s ease-in-out infinite;
+}
+
+footer a:hover {
+    background-image: linear-gradient(90deg, hsla(155, 23%, 71%, 1) 0%, hsla(302, 17%, 32%, 1) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300%;
+    animation: animated_gradient_text 12s ease-in-out infinite;
+    -moz-animation: animaanimated_gradient_textted_text 12s ease-in-out infinite;
+    -webkit-animation: animated_gradient_text 12s ease-in-out infinite;
+}
+  
+  @keyframes animated_gradient_text {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 /* Utility Classes */
 
 .primary-header {
