@@ -11,39 +11,39 @@ export default function HeadingInput({ name, socialLinks, setName, setSocialLink
   }
 
   function handleGithubChange(e) {
-  let updatedSocialLinks = [...socialLinks];
-  updatedSocialLinks[0] = e.target.value;
-  setSocialLinks(updatedSocialLinks);
-}
+    let updatedSocialLinks = [...socialLinks];
+    updatedSocialLinks[0] = e.target.value;
+    setSocialLinks(updatedSocialLinks);
+  }
 
-function handleLinkedinChange(e) {
-  let updatedSocialLinks = [...socialLinks];
-  updatedSocialLinks[1] = e.target.value;
-  setSocialLinks(updatedSocialLinks);
-}
+  function handleLinkedinChange(e) {
+    let updatedSocialLinks = [...socialLinks];
+    updatedSocialLinks[1] = e.target.value;
+    setSocialLinks(updatedSocialLinks);
+  }
 
-function handlePortfolioChange(e) {
-  let updatedSocialLinks = [...socialLinks];
-  updatedSocialLinks[2] = e.target.value;
-  setSocialLinks(updatedSocialLinks);
-}
+  function handlePortfolioChange(e) {
+    let updatedSocialLinks = [...socialLinks];
+    updatedSocialLinks[2] = e.target.value;
+    setSocialLinks(updatedSocialLinks);
+  }
 
-function handleEmailChange(e) {
-  let updatedSocialLinks = [...socialLinks];
-  updatedSocialLinks[3] = e.target.value;
-  setSocialLinks(updatedSocialLinks);
-}
+  function handleEmailChange(e) {
+    let updatedSocialLinks = [...socialLinks];
+    updatedSocialLinks[3] = e.target.value;
+    setSocialLinks(updatedSocialLinks);
+  }
 
-function handleContactChange(e) {
-  let updatedSocialLinks = [...socialLinks];
-  updatedSocialLinks[4] = e.target.value;
-  setSocialLinks(updatedSocialLinks);
-}
+  function handleContactChange(e) {
+    let updatedSocialLinks = [...socialLinks];
+    updatedSocialLinks[4] = e.target.value;
+    setSocialLinks(updatedSocialLinks);
+  }
 
-function handleReset() {
-  setSocialLinks(['','','','','','']);
-  setName('');
-}
+  function handleReset() {
+    setSocialLinks(['', '', '', '', '', '']);
+    setName('');
+  }
   return (
     <>
       <div className="input-bts">
@@ -69,16 +69,23 @@ function handleReset() {
           placeholder="Portfolio"
           value={socialLinks[2]}
           onChange={handlePortfolioChange}
+          pattern="https?://.+"
+          title="Please enter a valid URL."
         />
         <input
           placeholder="Email"
           value={socialLinks[3]}
           onChange={handleEmailChange}
+          type="email"
+          title="Please enter a valid email address."
         />
         <input
           placeholder="Contact"
           value={socialLinks[4]}
           onChange={handleContactChange}
+          type="number"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          title="Please enter a valid phone number in the format: 123-456-7890"
         />
       </form>
     </>
