@@ -30,10 +30,10 @@ import pdfImg from './assets/icons/pdf.svg'
 import html2canvas from 'html2canvas';
 import { jsPDF } from "jspdf";
 
-function App() {
+export default function App() {
   //states
   const [name, setName] = useState('Your Name')
-  const [socialLinks, setSocialLinks] = useState(['username', 'username', 'mysite.com', 'email@mysite.com', '+ 00.0000.000.000'])
+  const [socialLinks, setSocialLinks] = useState(['username', 'username', 'mysite.com', 'email@mysite.com', '+ 00.0000.000'])
 
   const [educationList, setEducationList] = useState([{ startDate: '2030', endDate: 'present', course: 'PhD (Subject) at University', grade: 'GPA: 4.0/4.0', id: uuid() }, { startDate: '2023', endDate: '2027', course: 'Bachelor’s Degree at College', grade: 'GPA: 4.0/4.0', id: uuid() }, { startDate: '2022', endDate: '2021', course: 'Class 12th Some Board', grade: 'Grade', id: uuid() }, { startDate: '2021', endDate: '2020', course: 'Class 10th Some Board', grade: 'Grade', id: uuid() }]);
 
@@ -43,6 +43,13 @@ function App() {
 
   const [projectActivities, setProjectActivities] = useState([{ title: 'Some Project', url: 'something.com', description: 'long long line of blah blah that will wrap when the table fills the column width again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah', id: uuid() }]);
 
+  const [isVisible, setIsVisible] = useState([false, false, false, false, false]);
+
+  function toggleVisibility(index) {
+    let updatedToggleArr = [...isVisible]
+    updatedToggleArr[index] = !updatedToggleArr[index]
+    setIsVisible(updatedToggleArr);
+  }
 
 
   //Input arrays
@@ -142,15 +149,10 @@ function App() {
     const socialLinksTexts = document.querySelectorAll(".social-links span");
     const resumeH2s = document.querySelectorAll(".resume-page h2");
 
-     // Get the element
-     const scaledElement = document.querySelector('.display-div');
+    const scaledElement = document.querySelector('.display-div');
+    const oldTransform = scaledElement.style.transform;
+    scaledElement.style.transform = 'none';
 
-     // Store the current transform value
-     const oldTransform = scaledElement.style.transform;
- 
-     // Remove the transform
-     scaledElement.style.transform = 'none';
- 
 
     resumeTitle.style.paddingBottom = '20px';
     socialLinksTexts.forEach(el => el.style.paddingBottom = '18px');
@@ -176,44 +178,49 @@ function App() {
     resumeTitle.style.paddingBottom = '';
     socialLinksTexts.forEach(el => el.style.paddingBottom = '');
     resumeH2s.forEach(el => el.style.paddingBottom = '');
-
     scaledElement.style.transform = oldTransform;
   }
+
+
 
   return (
     <>
       <div className="main-container">
-        <header className="primary-header" onClick={() => window.location.reload()}>OpenRésumé</header>
+        <header className="primary-header" onClick={() => window.location.reload()}>OpennRésumé</header>
         <section className="input-div">
           <button onClick={getPDF}><img src={pdfImg}></img>Download</button>
           <div className="personal-input">
-            <h2 className="input-heading flex-row"><img src={personImg}></img>Personal Details</h2>
-            <HeadingInput
-              name={name}
-              setName={setName}
-              socialLinks={socialLinks}
-              setSocialLinks={setSocialLinks}
-            />
+            <h2 className="input-heading" onClick={() => toggleVisibility(0)}><img src={personImg}></img>Personal Details</h2>
+            {isVisible[0] && (
+              <HeadingInput
+                name={name}
+                setName={setName}
+                socialLinks={socialLinks}
+                setSocialLinks={setSocialLinks}
+              />
+            )}
           </div>
           <div className="education-input">
-            <h2 className="input-heading"><img src={educationImg}></img>Education</h2>
-            {arrEducationInputs}
-            <button onClick={handleAddEducation}>+ Add New</button>
+            <h2 className="input-heading" onClick={() => toggleVisibility(1)}>
+              <img src={educationImg}></img>Education
+            </h2>
+            {isVisible[1] && arrEducationInputs}
+            {isVisible[1] &&<button onClick={handleAddEducation}>+ Add New</button>}
           </div>
           <div className="work-input">
-            <h2 className="input-heading"><img src={workImg}></img>Work Experience</h2>
-            {arrWorkInputs}
-            <button onClick={handleAddWork}>+ Add New</button>
+            <h2 className="input-heading" onClick={() => toggleVisibility(2)}><img src={workImg}></img>Work Experience</h2>
+            {isVisible[2] && arrWorkInputs}
+            {isVisible[2] &&<button onClick={handleAddWork}>+ Add New</button>}
           </div>
           <div className="skill-input">
-            <h2 className="input-heading"><img src={skillsImg} className="smaller-input-logo "></img>Skills</h2>
-            {arrSkillsInputs}
-            <button onClick={handleAddSkills}>+ Add New</button>
+            <h2 className="input-heading" onClick={() => toggleVisibility(3)}><img src={skillsImg} className="smaller-input-logo "></img>Skills</h2>
+            {isVisible[3] && arrSkillsInputs}
+            {isVisible[3] && <button onClick={handleAddSkills}>+ Add New</button>}
           </div>
           <div className="project-input">
-            <h2 className="input-heading"><img src={projectImg} className="smaller-input-logo "></img>Projects</h2>
-            {arrProjectInputs}
-            <button onClick={handleAddProject}>+ Add New</button>
+            <h2 className="input-heading" onClick={() => toggleVisibility(4)}><img src={projectImg} className="smaller-input-logo "></img>Projects</h2>
+            {isVisible[4] && arrProjectInputs}
+            {isVisible[4] && <button onClick={handleAddProject}>+ Add New</button>}
           </div>
         </section>
         <section className="display-div">
@@ -257,5 +264,3 @@ function App() {
     </>
   );
 }
-
-export default App

@@ -125,6 +125,7 @@
         font-weight: 700;
         padding: 0.4em 0.6em;
         cursor:pointer;
+        margin-bottom:1.5rem;
     }
     
     .input-div>button:first-child>img {
@@ -138,6 +139,7 @@
         place-items: center;
         font-family: var(--body-font);
         justify-self:center;
+        height:fit-content;
     }
     
     .input-div>div {
