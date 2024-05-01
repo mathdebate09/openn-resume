@@ -4,11 +4,11 @@ A React app for making CV Letters using the Harvard letter format
 > [Live Website](https://opennresume.netlify.app/)
 
 ## Preview
-![first-page](https://github.com/mathdebate09/openn-resume/assets/140599484/83afef48-ce60-4422-99a1-313a5e97cac8)
-![cv-app-footer](https://github.com/mathdebate09/openn-resume/assets/140599484/fdd0c905-a0bb-4ae0-9e09-7f0d62b0af86)
+![header-section-preview](https://github.com/mathdebate09/openn-resume/assets/140599484/83afef48-ce60-4422-99a1-313a5e97cac8)
+![footer-section-preview](https://github.com/mathdebate09/openn-resume/assets/140599484/fdd0c905-a0bb-4ae0-9e09-7f0d62b0af86)
 
 ## Lighthouse Score
-![Screenshot 2024-05-01 131518](https://github.com/mathdebate09/openn-resume/assets/140599484/a6d73caf-a9af-46e1-b0d9-68c978526631)
+![image](https://github.com/mathdebate09/openn-resume/assets/140599484/617967dc-547c-4575-8e6f-35d833a4d8bb)
 
 ## Tools/Languages
 
